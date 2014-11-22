@@ -1,0 +1,30 @@
+/*
+ *
+ * JUMBOTRON
+ *
+*/
+.jumbotron { background: none !important; }
+.jumbotron h1, .jumbotron h1 small { color: #a94442 !important; }
+.light-white { background-color: rgba(255,255,255,0.1); }
+
+/*
+ *
+ * DRAGGABLE
+ *
+*/
+.draggable { filter: alpha(opacity=60); opacity: 0.6; }
+.draggable-col { display: inline-block; margin: 10px; }
+.draggable-col:hover { cursor: pointer; }
+.draggable-col, .wishlist-col { z-index: 10; }
+.draggable-col img, .wishlist-col img { width: 100px; height: 100px; margin: 0 10px 10px 0; }
+.wishlist-col { height: 300px; }
+.wishlist-col .dropped { display: none; }
+.wishlist-visible { padding: 10px; }
+.wishlist-visible img { width: 60px; height: auto; margin: 0 5px 5px 0; }
+
+/*
+ *
+ * DROPPED
+ *
+*/
+.dropped { position: static !important; }
