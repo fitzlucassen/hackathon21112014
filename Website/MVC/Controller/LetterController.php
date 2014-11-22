@@ -38,15 +38,15 @@
 		    } else {
 		    	$Model->request = $Cdiscount->request('Search', array(
 			    	"SearchRequest" => array(
-			    		"Keyword" => "tablette",
+			    		"Keyword" => "e",
 					    "SortBy" => "relevance",
 					    "Pagination" => array(
 							"ItemsPerPage" => 10,
 							"PageNumber" => 0
 						),
 						"Filters" => array(
-							"Brands" => "asus"
-						)
+							'Navigation' => 'toys'
+						),
 					)
 				));
 		    }
