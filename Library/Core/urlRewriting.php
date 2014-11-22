@@ -102,7 +102,6 @@
 		 ***********/
 		public function getUrl(){
 			$this->_url = $this->_rewrittingUrlRepository->getByUrlMatched($this->_page);
-
 		    return $this->_url;
 		}
 		public function getPage(){

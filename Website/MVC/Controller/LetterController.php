@@ -55,6 +55,18 @@
 		    // cette fonction prend en paramètre le modèle
 		    $this->_view->ViewCompact($Model);
 		}
+
+		public function publicLetter($params){
+			// Une action commencera toujours par l'initilisation de son modèle
+		    // Cette initialisation doit obligatoirement contenir le repository manager
+		    $Model = new Model\LetterModel($this->_repositoryManager);
+
+		    
+		    
+		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
+		    // cette fonction prend en paramètre le modèle
+		    $this->_view->ViewCompact($Model);
+		}
 		
 		public function Error404(){
 		    $Model = new Model\HomeModel($this->_repositoryManager);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 22 Novembre 2014 à 17:47
+-- Généré le :  Sam 22 Novembre 2014 à 23:58
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `rewrittingurl` (
   `urlMatched` varchar(255) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'fr',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `rewrittingurl`
@@ -86,7 +86,8 @@ INSERT INTO `rewrittingurl` (`id`, `idRouteUrl`, `urlMatched`, `lang`) VALUES
 (2, 1, '/en/home.html', 'en'),
 (3, 2, '/404.html', 'fr'),
 (4, 2, '/en/404.html', 'en'),
-(5, 5, '/lettre.html', 'fr');
+(5, 3, '/lettre.html', 'fr'),
+(6, 8, '/{login}/lettre-afficher.html', 'fr');
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `routeurl` (
   `action` varchar(100) NOT NULL DEFAULT '',
   `order` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `routeurl`
@@ -110,9 +111,10 @@ CREATE TABLE IF NOT EXISTS `routeurl` (
 INSERT INTO `routeurl` (`id`, `name`, `controller`, `action`, `order`) VALUES
 (1, 'home', 'home', 'index', 0),
 (2, 'error404', 'home', 'error404', 0),
-(3, 'letter', 'letter', 'index', 0),
-(5, 'apiconnect', 'webservice', 'connect', 0),
-(6, 'testtest', 'test', 'testCdiscount', 0);
+(3, 'letter', 'letter', 'index', 1),
+(7, 'login', 'home', 'login', 0),
+(8, 'publicLetter', 'letter', 'publicLetter', 0),
+(9, 'apiconnect', 'webservice', 'connect', 0);
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `user`
@@ -138,7 +140,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `childfirstname`, `childlastname`, `age`, `gender`, `email`, `password`, `creationdate`) VALUES
 (1, 'mael', 'dulon', 4, 0, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22'),
-(4, 'eztryiu', '', 5, 0, 'zefrerferz@ererg.rg', '682a0c84f58ac2f8b2329d53def2bb22', '2014-11-22');
+(6, 'zefzfz', '', 4, 0, 'efzfez@zefef.fe', 'b989dec164c74a80b1dd4ad63fcb5280', '2014-11-22'),
+(7, 'Romain', '', 4, 0, 'cocuou@zezef.fe', 'f614be5c658acd76f5c71592b6ec09e6', '2014-11-22');
 
 -- --------------------------------------------------------
 
@@ -159,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `user_wishlist` (
 --
 
 INSERT INTO `user_wishlist` (`id`, `idUser`, `letterurl`, `creationdate`) VALUES
-(1, 1, 'hack-cdiscount.thibaultdulon.com/maeldulon/lettre', '2014-11-22');
+(1, 1, 'hack-cdiscount.thibaultdulon.com/1/lettre-afficher.html', '2014-11-22');
 
 -- --------------------------------------------------------
 
@@ -174,16 +177,17 @@ CREATE TABLE IF NOT EXISTS `user_wishlist_products` (
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` decimal(5,2) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `user_wishlist_products`
 --
 
-INSERT INTO `user_wishlist_products` (`id`, `idUserwishlist`, `idProduct`, `title`, `description`, `price`, `creationdate`) VALUES
-(1, 1, 1, 'produit test', 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum', '25.99', '2014-11-22');
+INSERT INTO `user_wishlist_products` (`id`, `idUserwishlist`, `idProduct`, `title`, `description`, `price`, `image`, `creationdate`) VALUES
+(1, 1, 1, 'produit test', 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum', '25.99', 'http://houstin.info/wp-content/uploads/2010/03/lapin-cretin1.jpg', '2014-11-22');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
