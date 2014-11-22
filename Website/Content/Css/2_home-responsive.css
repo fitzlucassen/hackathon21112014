@@ -5,7 +5,14 @@
 
 }
 @media screen and (max-width:600px){
-
+	.htmlContainer{
+		width: auto;
+		text-align:center;
+		margin:auto;
+	}
+	label.label{
+		width: auto;
+	}
 }
 @media screen and (max-width:400px){
 

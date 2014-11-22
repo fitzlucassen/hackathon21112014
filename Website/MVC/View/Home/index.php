@@ -10,7 +10,7 @@
 	<div class="perenoel">
 	</div>
 
-	<div style="width: 500px;text-align:center;margin:auto;">
+	<div class="htmlContainer">
 		<?php echo $this->Model->htmlForm; ?>
 	</div>
 	<!-- <form action="/webservice/connect" method="post">

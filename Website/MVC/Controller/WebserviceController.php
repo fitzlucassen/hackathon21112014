@@ -26,6 +26,7 @@
 
 		    $UserRepository = $this->_repositoryManager->get('User');
 		    $UserWishRepository = $this->_repositoryManager->get('Userwishlist');
+		    $ProductRepository = $this->_repositoryManager->get('Userwishlistproducts');
 
 		    if(Core\Request::isPost()){
 		    	// It's a form validation
@@ -48,7 +49,9 @@
 			    	$wish = $UserWishRepository->getBy('idUser', $user->getId());
 			    	$wish = $wish[0];
 
-			    	$Model->result = json_encode(array(
+			    	$p = $ProductRepository->getBy('idUserwishlist', $wish->getId());
+
+			    	$Model->result = array(
 			    		'user' => array(
 			    			'id' => $user->getId(),
 			    			'childfirstname' => $user->getChildfirstname(),
@@ -60,8 +63,21 @@
 			    			'id' => $wish->getId(),
 			    			'letterUrl' => $wish->getLetterurl(),
 			    			'creationdate' => $wish->getCreationdate(),
+			    			'products' => array(
+			    			)
 			    		)
-			    	));
+			    	);
+
+			    	foreach ($p as $value) {
+			    		$Model->result['wishlist']['products'][] = array(
+			    			'id' => $value->getIdProduct(),
+			    			'title' => $value->getTitle(),
+			    			'description' => $value->getDescription(),
+			    			'price' => $value->getPrice(),
+			    			'creationdate' => $value->getCreationdate()
+			    		);
+			    	}
+			    	$Model->result = json_encode($Model->result);
 			    }
 		    }
 		    		    

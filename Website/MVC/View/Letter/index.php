@@ -1,7 +1,6 @@
 <title>Hackathon</title>
 
 <link rel="stylesheet" href="<?php echo __css_directory__ ?>/bootstrap.css" />
-<link rel="stylesheet" href="<?php echo __css_directory__ ?>/lettre.css" />
 <link href="http://code.jquery.com/ui/1.8.24/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 <?php

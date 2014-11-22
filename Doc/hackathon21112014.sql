@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 22 Novembre 2014 à 15:37
+-- Généré le :  Sam 22 Novembre 2014 à 17:47
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -130,14 +130,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `childfirstname`, `childlastname`, `age`, `gender`, `email`, `password`, `creationdate`) VALUES
-(1, 'mael', 'dulon', 4, 0, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22');
+(1, 'mael', 'dulon', 4, 0, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22'),
+(4, 'eztryiu', '', 5, 0, 'zefrerferz@ererg.rg', '682a0c84f58ac2f8b2329d53def2bb22', '2014-11-22');
 
 -- --------------------------------------------------------
 
@@ -159,6 +160,30 @@ CREATE TABLE IF NOT EXISTS `user_wishlist` (
 
 INSERT INTO `user_wishlist` (`id`, `idUser`, `letterurl`, `creationdate`) VALUES
 (1, 1, 'hack-cdiscount.thibaultdulon.com/maeldulon/lettre', '2014-11-22');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user_wishlist_products`
+--
+
+CREATE TABLE IF NOT EXISTS `user_wishlist_products` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `idUserwishlist` int(5) NOT NULL,
+  `idProduct` int(5) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(5,2) NOT NULL,
+  `creationdate` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `user_wishlist_products`
+--
+
+INSERT INTO `user_wishlist_products` (`id`, `idUserwishlist`, `idProduct`, `title`, `description`, `price`, `creationdate`) VALUES
+(1, 1, 1, 'produit test', 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum', '25.99', '2014-11-22');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
