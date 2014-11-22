@@ -19,7 +19,11 @@ $(document).ready(function () {
 
     $(".wishlist-col").droppable({
         drop: function (event, ui) {
+<<<<<<< HEAD
             if ($(".wishlist-col").length == 0) {
+=======
+            if ($(".wishlist-col img").length === 0) {
+>>>>>>> 75ab2dbea0d5e9077cd30cacb9208db741901bc3
                 $(".wishlist-col").html("");
             }
             ui.draggable.addClass("dropped");
@@ -51,7 +55,7 @@ $(document).ready(function () {
             data: {postData:data},
             url: '/lettre.html',
             success: function(data){
-                alert(data);
+                localtion.href('/accueil.html');
             },
             error: function(e){
                 alert(e.message);

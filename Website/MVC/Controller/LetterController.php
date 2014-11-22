@@ -23,23 +23,18 @@
 		    $Model = new Model\LetterModel($this->_repositoryManager);
 		    $Cdiscount = new Helper\Cdiscount($this->_repositoryManager);
 
-		    if (isset($_POST['postData'])) {
-		    	if(Core\Request::isPost() || Core\Request::isGet()){
-			    	// It's a form validation
-			    	// Clean all vars
-			    	$data = Core\Request::cleanRequest();
+		    if(Core\Request::isPost() || Core\Request::isGet()){
+			   	// It's a form validation
+			   	// Clean all vars
+			   	$data = Core\Request::cleanRequest();
 
-			    	$UserRepository = $this->_repositoryManager->get('user');
-			    	$UserRepository->add(array(
-			    		'childfirstname' => $data['childfirstname'],
-			    		'childlastname' => '',
-			    		'age' => $data['age'],
-			    		'gender' => $data['gender'],
-			    		'creationdate' => date('y-m-d'),
-			    		'email' => $data['email'],
-			    		'password' => md5($data['password'])
-			    	));
-			    } 
+			   	$UserRepository = $this->_repositoryManager->get('user_wishlist_products');
+			   	$UserRepository->add(array(
+			   		'idProduct' => $data['id'];
+			   		'title' => $data['name'];
+			   		'description' => str_replace('£', '"', $data['description']);
+			   		'price' => $data['price']
+			   	)); 
 		    } else {
 		    	$Model->request = $Cdiscount->request('Search', array(
 			    	"SearchRequest" => array(
@@ -49,7 +44,7 @@
 							"ItemsPerPage" => 10,
 							"PageNumber" => 0
 						),
-						"Filters" => array(
+						"Filters" => array()
 							"Brands" => "asus"
 						)
 					)

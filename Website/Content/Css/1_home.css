@@ -3,9 +3,8 @@
 }
 .perenoel{
 	width: 400px;
-	height: 400px;
+	height: 500px;
 	margin: 50px auto;
-	background: #e74c3c url(../Media/Images/perenoel.jpg) center center no-repeat;
 }
 label.label{
 	text-align: center;
@@ -15,7 +14,7 @@ label.label{
 	margin: 20px auto;
 	font-family: 'Segoe UI';
 	font-size: 18px;
-	color: #444;
+	color: #f2f2f2;
 }
 input.textField{
 	background: #dedfde;
@@ -96,4 +95,9 @@ select.select{
 	color: #444;
 	margin: 0 auto;
 	text-align: center;
+}
+.htmlContainer{
+	width: 600px;
+	text-align:center;
+	margin:auto;
 }
