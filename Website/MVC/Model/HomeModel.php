@@ -8,6 +8,7 @@
      */
     class HomeModel extends Model{
         public $htmlForm = "";
+        public $loginForm = "";
 
         public function __construct($manager) {
             parent::__construct($manager);

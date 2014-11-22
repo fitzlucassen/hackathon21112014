@@ -67,54 +67,57 @@
 		 */
 		public static function FindPattern($pattern, $method = false) { // method is for anonymous params
 		    if (!$method) {
-			foreach (self::GetRoutes() as $key => $value) {
-			    if ($value["pattern"] == $pattern)
-				return self::GetRoutes($key);
-			}
+				foreach (self::GetRoutes() as $key => $value) {
+				    if ($value["pattern"] == $pattern)
+					return self::GetRoutes($key);
+				}
 		    }
 		    else {		
-			$langInUrl = "";
-			if(isset($pattern) && !empty($pattern)){
-			    $langInUrl = false;
-			    
-			    foreach(self::$_langs as $thisLang){
-				if(strpos($pattern, "/" . $thisLang . "/") === 0)
-				    $langInUrl = $thisLang;			    
-			    }
-			    if(!$langInUrl)
-				$langInUrl = self::$_defaultLang;
-			}
-			
-			$array = self::GetRoutes(null, $langInUrl);
-			foreach ($array as $key => $value) {
-			    $regex = "#" . preg_replace("#{([" . self::$_regex . "]+)}#i", "([" . self::$_regex . "]+)", $value["pattern"]) . "#i";
-			    if (preg_match($regex, $pattern, $matches)){
-				if(isset($matches[1]) || isset($matches[0])){
-				    $i = 1;
-				    if(!isset($matches[1])){
-					$i = 0;
-				    }
-				    if(empty($matches[$i]))
-					return false;
+				$langInUrl = "";
+				if(isset($pattern) && !empty($pattern)){
+				    $langInUrl = false;
 				    
-				    $index = strpos($pattern, $matches[$i]);
-				    
-				    if($i > 0){
-					if($pattern == "/" || (strpos(substr($regex, 1), substr($pattern, 0, $index)) === 0))
-					    return self::GetRoutes($key, $langInUrl);
+				    foreach(self::$_langs as $thisLang){
+						if(strpos($pattern, "/" . $thisLang . "/") === 0)
+						    $langInUrl = $thisLang;			    
 				    }
-				    else {
-					if($pattern == "/" || (strpos(substr($regex, 1), $pattern) === 0)){
-					    return self::GetRoutes($key, $langInUrl);
-					}
+				    if(!$langInUrl)
+						$langInUrl = self::$_defaultLang;
+				}
+
+				$array = self::GetRoutes(null, $langInUrl);
+
+				foreach ($array as $key => $value) {
+				    $regex = "#" . preg_replace("#{([" . self::$_regex . "]+)}#i", "([" . self::$_regex . "]+)", $value["pattern"]) . "#i";
+				    
+				    if (preg_match($regex, $pattern, $matches) && isset($value["pattern"])){
+
+						if(isset($matches[1]) || isset($matches[0])){
+						    $i = 1;
+						    if(!isset($matches[1])){
+								$i = 0;
+						    }
+						    if(empty($matches[$i]))
+								return false;
+						    
+						    $index = strpos($pattern, $matches[$i]);
+						    
+						    if($i > 0){
+								if($pattern == "/" || (strpos(substr($regex, 1), substr($pattern, 0, $index)) === 0))
+							    	return self::GetRoutes($key, $langInUrl);
+						    }
+						    else {
+								if($pattern == "/" || (strpos(substr($regex, 1), $pattern) === 0)){
+							    	return self::GetRoutes($key, $langInUrl);
+								}
+						    }
+						}
+						else {
+						    if($pattern == "/" || (strpos(substr($regex, 1), $pattern) === 0))
+								return self::GetRoutes($key, $langInUrl);
+						}
 				    }
 				}
-				else {
-				    if($pattern == "/" || (strpos(substr($regex, 1), $pattern) === 0))
-					return self::GetRoutes($key, $langInUrl);
-				}
-			    }
-			}
 		    }
 		    return false;
 		}
