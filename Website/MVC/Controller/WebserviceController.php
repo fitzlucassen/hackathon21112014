@@ -24,8 +24,8 @@
 
 		    $this->setLayout('json');
 
-		    $UserRepository = $this->_repositoryManager->get('user');
-		    $UserWishRepository = $this->_repositoryManager->get('userwishlist');
+		    $UserRepository = $this->_repositoryManager->get('User');
+		    $UserWishRepository = $this->_repositoryManager->get('Userwishlist');
 
 		    if(Core\Request::isPost()){
 		    	// It's a form validation
