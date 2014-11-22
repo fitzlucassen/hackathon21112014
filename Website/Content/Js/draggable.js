@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".draggable-col img").draggable({
+    $(".draggable-col").draggable({
         revert: "invalid",
         refreshPositions: true,
         drag: function (event, ui) {
@@ -16,13 +16,46 @@ $(document).ready(function () {
             }
         }
     });
+
     $(".wishlist-col").droppable({
         drop: function (event, ui) {
-            if ($(".wishlist-col img").length == 0) {
+            if ($(".wishlist-col").length == 0) {
                 $(".wishlist-col").html("");
             }
             ui.draggable.addClass("dropped");
             $(".wishlist-col").append(ui.draggable);
         }
+    });
+
+    $("#reinitialiser").click(function(){
+        location.reload();
+    });
+
+    $("#envoyer").click(function(){
+        var i = 0;
+        var data = [];
+
+        $(".wishlist-col").find(".draggable-col").each(function(){
+            data.push({
+                'id':$(this).find(".hidden-id").val(),
+                'name':$(this).find(".hidden-name").val(),
+                'description':$(this).find(".hidden-description").val(),
+                'price':$(this).find(".hidden-sale-price").val(),
+            });
+            i++;
+        });
+
+        $.ajax({
+            type: 'POST',
+            datatype: 'json',
+            data: {postData:data},
+            url: '/lettre.html',
+            success: function(data){
+                alert(data);
+            },
+            error: function(e){
+                alert(e.message);
+            }
+        });
     });
 });
