@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="72x72" href="../favicon72.png" />
 <link rel="apple-touch-icon" sizes="114x114" href="../favicon114.png" />
 
-<link type="text/css" rel="stylesheet" href="<?php echo __css_directory__;?>/_built.css" />
+<link type="text/css" rel="stylesheet" href="/<?php echo __css_directory__;?>/_built.css" />
 
 <!--[if lt IE 9]>
 	<script src="<?php echo __js_directory__  ; ?>/Base/html5shiv.js"></script>
