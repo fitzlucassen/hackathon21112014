@@ -10,7 +10,9 @@
 	<div class="perenoel">
 	</div>
 
-	<?php echo $this->Model->htmlForm; ?>
+	<div style="width: 500px;text-align:center;margin:auto;">
+		<?php echo $this->Model->htmlForm; ?>
+	</div>
 	<!-- <form action="/webservice/connect" method="post">
 		<input type="text" name="email"/>
 		<input type="password" name="password" />

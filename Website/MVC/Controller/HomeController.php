@@ -23,13 +23,34 @@
 		    $Model = new Model\HomeModel($this->_repositoryManager);
 
 		    $Form = new Helper\Form();
+		    $Auth = new Helper\Auth($this->_repositoryManager, array(
+				'table' => 'user',
+				'primaryKeyField' => 'id',
+				'loginField' => 'email',
+				'passwordField' => 'password',
+				'adminField' => 'isAdmin',
+				'encryptedPassword' => true
+			));
 
 		    if(Core\Request::isPost() || Core\Request::isGet()){
 		    	// It's a form validation
 		    	// Clean all vars
 		    	$data = Core\Request::cleanRequest();
 
-		    	// Process request...
+		    	$UserRepository = $this->_repositoryManager->get('user');
+		    	$UserRepository->add(array(
+		    		'childfirstname' => $data['childfirstname'],
+		    		'childlastname' => '',
+		    		'age' => $data['age'],
+		    		'gender' => $data['gender'],
+		    		'creationdate' => dsate('y-m-d'),
+		    		'email' => $data['email'],
+		    		'password' => md5($data['password'])
+		    	));
+
+		    	$Auth->connect($data['email'], $data['password']);
+
+		    	header('location: /lettre.html');
 		    }
 		    else {
 		    	// On créée notre formulaire
@@ -45,6 +66,8 @@
 		    		true
 		    	);
 
+		    	$html .= $Form->input("button", "nextStep", "Ok", false, true, array("class" => "btnField btnNextStep"), true);
+
 		    	$html .= $Form->input(
 		    		"number", 
 		    		"age", 
@@ -55,15 +78,30 @@
 		    		true
 		    	);
 
+		    	$html .= $Form->input("button", "nextStep", "Ok", false, true, array("class" => "btnField btnNextStep"), true);
+
+		    	$html .= $Form->select(
+		    		"gender", 
+		    		array('Garçon' => 0, 'Fille' => 1), 
+		    		"Oh ! Mais tu es déjà grand ! Es-tu une grande fille ou un grand garçon ?", 
+		    		false, 
+		    		array("class" => "select hidden"), 
+		    		true
+		    	);
+
+		    	$html .= $Form->input("button", "nextStep", "Ok", false, true, array("class" => "btnField btnNextStep"), true);
+
 		    	$html .= $Form->input(
 		    		"email", 
 		    		"email", 
 		    		"",
-		    		"Oh, quel grand garçon ! Dis moi {0}, pour pouvoir m'écrire ta lettre il faudrait que tu appels tes parents afin qu'ils me parlent un peu de toi !", 
+		    		"{1} ! Dis moi {0}, pour pouvoir m'écrire ta lettre il faudrait que tu appels tes parents afin qu'ils me parlent un peu de toi !", 
 		    		false, 
 		    		array("class" => "textField hidden", "placeholder" => "L'adresse e-mail de tes parents"), 
 		    		true
 		    	);
+
+		    	$html .= $Form->input("button", "nextStep", "Ok", false, true, array("class" => "btnField btnNextStep"), true);
 
 		    	$html .= $Form->input(
 		    		"password", 
@@ -71,7 +109,7 @@
 		    		"",
 		    		"Parfait ! Pour pouvoir vous connecter sur votre lettre il vous faut maintenant choisir un mot de passe...", 
 		    		false, 
-		    		array("class" => "textField hidden", "placeholder" => "password"), 
+		    		array("class" => "textField hidden", "placeholder" => "mot de passe"), 
 		    		true
 		    	);
 
