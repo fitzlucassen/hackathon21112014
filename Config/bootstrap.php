@@ -11,7 +11,7 @@
     spl_autoload_register("App::ManageAutoload");
     
     // Put your SQL config here
-    Core\Sql::SetDb("portfoliov2");
+    Core\Sql::SetDb("hackathon21112014");
     Core\Sql::SetHost("localhost");
     Core\Sql::SetUser("root");
     Core\Sql::SetPwd("");
@@ -35,7 +35,7 @@
     // End logger config
     
     // Define your webapp needs here
-    App::setIsDebugMode(false);
+    App::setIsDebugMode(true);
     App::setDatabaseNeeded(true);
     App::setUrlRewritingNeeded(true);
     // End

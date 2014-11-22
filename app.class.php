@@ -163,7 +163,6 @@
 				$actionName = $this->_url['action'];
 		    else
 				$actionName = $this->_urlRewritingObject->getAction();
-
 			$this->_dispatcher->manageAction($actionName, $this->_repositoryManager);
 		    
 		    // On exécute l'action cible du controller et on affiche la vue avec le modèle renvoyé

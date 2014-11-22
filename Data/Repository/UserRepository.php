@@ -9,7 +9,7 @@
 	use fitzlucassen\FLFramework\Library\Core as cores;
 	use fitzlucassen\FLFramework\Data\Entity as entities;
 
-	class SkillsRepository {
+	class UserRepository {
 		private $_pdo;
 		private $_lang;
 		private $_pdoHelper;
@@ -27,12 +27,12 @@
 		 **************************/
 		public static function getAll($Connection){
 			$qb = new cores\QueryBuilder(true);
-			$query = $qb->select()->from(array("skills"))->getQuery();
+			$query = $qb->select()->from(array("user"))->getQuery();
 			try {
 				$result = $Connection->SelectTable($query);
 				$array = array();
 				foreach ($result as $object){
-					$o = new entities\Skills();
+					$o = new entities\User();
 					$o->fillObject($object);
 					$array[] = $o;
 				}
@@ -45,11 +45,11 @@
 		}
 
 		public function getById($id){
-			$query = $this->_queryBuilder->select()->from(array("skills"))
+			$query = $this->_queryBuilder->select()->from(array("user"))
 										->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id)))->getQuery();
 			try {
 				$properties = $this->_pdoHelper->Select($query);
-				$object = new entities\Skills();
+				$object = new entities\User();
 				$object->fillObject($properties);
 				return $object;
 			}
@@ -60,13 +60,13 @@
 		}
 
 		public function getBy($key, $value){
-			$query = $this->_queryBuilder->select()->from(array("skills"))
+			$query = $this->_queryBuilder->select()->from(array("user"))
 										->where(array(array("link" => "", "left" => $key, "operator" => "=", "right" => $value)))->getQuery();
 			try {
 				$properties = $this->_pdoHelper->SelectTable($query);
 				$array = array();
 				foreach ($properties as $object){
-					$o = new entities\Skills();
+					$o = new entities\User();
 					$o->fillObject($object);
 					$array[] = $o;
 				}
@@ -79,7 +79,7 @@
 		}
 
 		public function delete($id) {
-			$query = $this->_queryBuilder->delete("skills")
+			$query = $this->_queryBuilder->delete("user")
 										->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))
 										->getQuery();
 			try {
@@ -92,7 +92,7 @@
 		}
 
 		public function add($properties) {
-			$query = $this->_queryBuilder->insert("skills", array('title' => $properties["title"], 'mark' => $properties["mark"], 'category' => $properties["category"], 'dCrea' => $properties["dCrea"], ))->getQuery();
+			$query = $this->_queryBuilder->insert("user", array('childfirstname' => $properties["childfirstname"], 'childlastname' => $properties["childlastname"], 'age' => $properties["age"], 'email' => $properties["email"], 'password' => $properties["password"], 'creationdate' => $properties["creationdate"], ))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}
@@ -103,7 +103,7 @@
 		}
 
 		public function update($id, $properties) {
-			$query = $this->_queryBuilder->update("skills", array('title' => $properties["title"], 'mark' => $properties["mark"], 'category' => $properties["category"], 'dCrea' => $properties["dCrea"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
+			$query = $this->_queryBuilder->update("user", array('childfirstname' => $properties["childfirstname"], 'childlastname' => $properties["childlastname"], 'age' => $properties["age"], 'email' => $properties["email"], 'password' => $properties["password"], 'creationdate' => $properties["creationdate"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}

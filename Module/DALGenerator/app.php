@@ -22,18 +22,22 @@
 	/*************************
 	 * PUT YOUR CONFIGS HERE *
 	 *************************/
-       $Config->setDB("portfoliov2");					    // database
+       $Config->setDB("hackathon21112014");					    // database
        $Config->setHOST("localhost");					    // database host
        $Config->setUSER("root");					        // user name
        $Config->setPWD("");						           // password
-       $Config->setPATHENTITIES("C:/wamp/www/portfoliov2/Data/Entity/");			          // The path where entities will be created
-       $Config->setPATHREPOSITORIES("C:/wamp/www/portfoliov2/Data/Repository/");		    // The path where repositories will be created
+       $Config->setPATHENTITIES("C:/wamp/www/hackathon21112014/Data/Entity/");			          // The path where entities will be created
+       $Config->setPATHREPOSITORIES("C:/wamp/www/hackathon21112014/Data/Repository/");		    // The path where repositories will be created
        
        // If there is some links into your tables, you have to precise these right here.
        // 
        // Example: you will have "getSongs" method into the "album" class, and you'll have "getALbum" instead of "getAlbumId" into "song" class
-       $Config->setLink(array(	'routeurl' => array('rewrittingurl' => 'OneToMany'),
-				'rewrittingurl' => array('routeurl' => 'OneToOne')));
+       $Config->setLink(array(
+          'routeurl' => array('rewrittingurl' => 'OneToMany'),
+          'rewrittingurl' => array('routeurl' => 'OneToOne'),
+          'user' => array('user_wishlist' => 'OneToMany'),
+  				'user_wishlist' => array('user' => 'OneToOne'),
+        ));
        /*******
 	* END *
 	*******/

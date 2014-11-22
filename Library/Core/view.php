@@ -50,7 +50,7 @@
 	    $content = ob_get_clean();
 	    
 	    // On récupère le contenue en cache (si layout rss --> on n'a pas de head)
-	    if($this->_layout !== "rss")
+	    if($this->_layout !== "rss" && $this->_layout !== "json")
 	    	$this->Head = $head;
 	    else
 	    	$this->Head = "";
