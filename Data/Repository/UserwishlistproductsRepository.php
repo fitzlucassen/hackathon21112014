@@ -92,7 +92,7 @@
 		}
 
 		public function add($properties) {
-			$query = $this->_queryBuilder->insert("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'creationdate' => $properties["creationdate"], ))->getQuery();
+			$query = $this->_queryBuilder->insert("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'image' => $properties["image"], 'creationdate' => $properties["creationdate"], ))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}
@@ -103,7 +103,7 @@
 		}
 
 		public function update($id, $properties) {
-			$query = $this->_queryBuilder->update("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'creationdate' => $properties["creationdate"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
+			$query = $this->_queryBuilder->update("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'image' => $properties["image"], 'creationdate' => $properties["creationdate"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}

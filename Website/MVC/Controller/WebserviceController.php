@@ -74,7 +74,8 @@
 			    			'title' => $value->getTitle(),
 			    			'description' => $value->getDescription(),
 			    			'price' => $value->getPrice(),
-			    			'creationdate' => $value->getCreationdate()
+			    			'creationdate' => $value->getCreationdate(),
+			    			'image' => $value->getImage()
 			    		);
 			    	}
 			    	$Model->result = json_encode($Model->result);

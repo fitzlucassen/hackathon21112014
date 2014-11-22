@@ -15,12 +15,13 @@
 		private $_title;
 		private $_description;
 		private $_price;
+		private $_image;
 		private $_creationdate;
 		private $_queryBuilder;
 
-		public function __construct($id = "", $idUserwishlist = "", $idProduct = "", $title = "", $description = "", $price = "", $creationdate = ""){
+		public function __construct($id = "", $idUserwishlist = "", $idProduct = "", $title = "", $description = "", $price = "", $image = "", $creationdate = ""){
 			$this->_queryBuilder = new cores\QueryBuilder(true);
-			$this->fillObject(array("id" => $id, "idUserwishlist" => $idUserwishlist, "idProduct" => $idProduct, "title" => $title, "description" => $description, "price" => $price, "creationdate" => $creationdate));
+			$this->fillObject(array("id" => $id, "idUserwishlist" => $idUserwishlist, "idProduct" => $idProduct, "title" => $title, "description" => $description, "price" => $price, "image" => $image, "creationdate" => $creationdate));
 		}
 
 		/***********
@@ -37,6 +38,9 @@
 		}
 		public function getTitle() {
 			return $this->_title;
+		}
+		public function getImage(){
+			return $this->_image;
 		}
 		public function getDescription() {
 			return $this->_description;
@@ -64,6 +68,8 @@
 				$this->_description = $properties["description"];
 			if(!empty($properties["price"]))
 				$this->_price = $properties["price"];
+			if(!empty($properties["image"]))
+				$this->_image = $properties["image"];
 			if(!empty($properties["creationdate"]))
 				$this->_creationdate = $properties["creationdate"];
 		}
