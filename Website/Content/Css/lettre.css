@@ -1,0 +1,13 @@
+.jumbotron { background: none; }
+
+.jumbotron h1, .jumbotron h1 small { color: #a94442; }
+
+.container-fluid { text-align: center; }
+
+.row { text-align: left; }
+
+.draggable { filter: alpha(opacity=60); opacity: 0.6; }
+
+.dropped { position: static !important; }
+
+.draggable-col img, .wishlist-col img { width: 100px; height: 100px; z-index: 10; }
