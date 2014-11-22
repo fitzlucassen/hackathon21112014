@@ -43,7 +43,7 @@
 		    		'childlastname' => '',
 		    		'age' => $data['age'],
 		    		'gender' => $data['gender'],
-		    		'creationdate' => dsate('y-m-d'),
+		    		'creationdate' => date('y-m-d'),
 		    		'email' => $data['email'],
 		    		'password' => md5($data['password'])
 		    	));
@@ -60,7 +60,7 @@
 		    		"text", 
 		    		"childfirstname", 
 		    		"", 
-		    		"Ho ho ho ! Bonjour mon petit, comment t'appels-tu ?", 
+		    		"Ho ho ho ! Bonjour, comment t'appelles-tu ?", 
 		    		false, 
 		    		array("class" => "textField current", "placeholder" => "Ton prénom"), 
 		    		true
@@ -95,7 +95,7 @@
 		    		"email", 
 		    		"email", 
 		    		"",
-		    		"{1} ! Dis moi {0}, pour pouvoir m'écrire ta lettre il faudrait que tu appels tes parents afin qu'ils me parlent un peu de toi !", 
+		    		"{1} ! Dis moi {0}, pour pouvoir m'écrire ta lettre il faudrait que tu appelles tes parents afin qu'ils me parlent un peu de toi !", 
 		    		false, 
 		    		array("class" => "textField hidden", "placeholder" => "L'adresse e-mail de tes parents"), 
 		    		true
