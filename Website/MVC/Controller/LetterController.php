@@ -30,9 +30,9 @@
 
 			   	$UserRepository = $this->_repositoryManager->get('user_wishlist_products');
 			   	$UserRepository->add(array(
-			   		'idProduct' => $data['id'];
-			   		'title' => $data['name'];
-			   		'description' => str_replace('£', '"', $data['description']);
+			   		'idProduct' => $data['id'],
+			   		'title' => $data['name'],
+			   		'description' => str_replace('£', '"', $data['description']),
 			   		'price' => $data['price']
 			   	)); 
 		    } else {
@@ -44,7 +44,7 @@
 							"ItemsPerPage" => 10,
 							"PageNumber" => 0
 						),
-						"Filters" => array()
+						"Filters" => array(
 							"Brands" => "asus"
 						)
 					)

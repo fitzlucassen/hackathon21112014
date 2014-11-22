@@ -32,10 +32,11 @@
 				} else {
 					echo '<div class="draggable-col">';				
 					echo '<img src="' . $products->MainImageUrl . '" alt="Best Offer" class="img-thumbnail pull-left" />';
-					echo '<p class="text-danger">' . $products->Name . '</p>';
+					echo '<p class="text-danger hidden-name">' . $products->Name . '</p>';
 					echo '<p class="text-primary">' . $products->Brand . '</p>';
-					echo '<p id="SalePrice-' . $i . '" class="cache">' . $products->BestOffer->SalePrice . '</p>';
-					echo '<p id="Id-' . $i . '" class="cache">' . $products->BestOffer->Id . '</p>';
+					echo '<input type="hidden" class="cache hidden-id" value="' . $products->BestOffer->Id . '" />';
+					echo '<input type="hidden" class="cache hidden-description" value="' . $products->Description . '" />';
+					echo '<input type="hidden" class="cache hidden-price" value="' . $products->BestOffer->SalePrice . '" />';
 					echo '<div class="clearfix"></div>';
 					echo '</div>';
 					$i++;
