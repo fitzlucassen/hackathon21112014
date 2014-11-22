@@ -22,7 +22,64 @@
 		    // Cette initialisation doit obligatoirement contenir le repository manager
 		    $Model = new Model\HomeModel($this->_repositoryManager);
 
-		    
+		    $Form = new Helper\Form();
+
+		    if(Core\Request::isPost() || Core\Request::isGet()){
+		    	// It's a form validation
+		    	// Clean all vars
+		    	$data = Core\Request::cleanRequest();
+
+		    	// Process request...
+		    }
+		    else {
+		    	// On créée notre formulaire
+		    	$html = "";
+		    	$html .= $Form->open();
+		    	$html .= $Form->input(
+		    		"text", 
+		    		"childfirstname", 
+		    		"", 
+		    		"Ho ho ho ! Bonjour mon petit, comment t'appels-tu ?", 
+		    		false, 
+		    		array("class" => "textField current", "placeholder" => "Ton prénom"), 
+		    		true
+		    	);
+
+		    	$html .= $Form->input(
+		    		"number", 
+		    		"age", 
+		    		"", 
+		    		"D'accord, mais dis moi {0}, quel âge as-tu ?", 
+		    		false, 
+		    		array("class" => "textField hidden", "placeholder" => "Ton âge"), 
+		    		true
+		    	);
+
+		    	$html .= $Form->input(
+		    		"email", 
+		    		"email", 
+		    		"",
+		    		"Oh, quel grand garçon ! Dis moi {0}, pour pouvoir m'écrire ta lettre il faudrait que tu appels tes parents afin qu'ils me parlent un peu de toi !", 
+		    		false, 
+		    		array("class" => "textField hidden", "placeholder" => "L'adresse e-mail de tes parents"), 
+		    		true
+		    	);
+
+		    	$html .= $Form->input(
+		    		"password", 
+		    		"password", 
+		    		"",
+		    		"Parfait ! Pour pouvoir vous connecter sur votre lettre il vous faut maintenant choisir un mot de passe...", 
+		    		false, 
+		    		array("class" => "textField hidden", "placeholder" => "password"), 
+		    		true
+		    	);
+
+		    	$html .= $Form->input("submit", "validation", "VALIDER", false, true, array("class" => "btnField"), true);
+		    	$html .= $Form->close();
+
+		    	$Model->htmlForm = $html;
+		    }
 		    		    
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle
