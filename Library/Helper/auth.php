@@ -46,7 +46,7 @@
 		    
 		    $attr = 'get' . ucwords($this->_params['primaryKeyField']);
 
-		    if(isset($user)){
+		    if(isset($user) && count($user) > 0){
 		    	if(is_array($user))
 		    		$user = $user[0];
 		    	

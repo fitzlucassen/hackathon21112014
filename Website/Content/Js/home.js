@@ -47,4 +47,8 @@ $(document).ready(function(){
 			});
 		});
 	});
+
+	$('.login').click(function(){
+		$('.login-panel').toggle('slow');
+	});
 });

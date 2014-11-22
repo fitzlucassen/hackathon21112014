@@ -19,12 +19,13 @@ $(document).ready(function () {
 
     $(".wishlist-col").droppable({
         drop: function (event, ui) {
-            if ($(".wishlist-col").length == 0) {
-            if ($(".wishlist-col img").length === 0) {
-                $(".wishlist-col").html("");
+            if ($(".wishlist-col").length === 0) {
+                if ($(".wishlist-col img").length === 0) {
+                    $(".wishlist-col").html("");
+                }
+                ui.draggable.addClass("dropped");
+                $(".wishlist-col").append(ui.draggable);
             }
-            ui.draggable.addClass("dropped");
-            $(".wishlist-col").append(ui.draggable);
         }
     });
 

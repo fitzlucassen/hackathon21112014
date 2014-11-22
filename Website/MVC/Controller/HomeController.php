@@ -55,6 +55,31 @@
 		    else {
 		    	// On créée notre formulaire
 
+		    	$h = "";
+		    	$h .= $Form->open("/home/login");
+		    	$h .= $Form->input(
+		    		"text", 
+		    		"email", 
+		    		"", 
+		    		false, 
+		    		false, 
+		    		array("class" => "textField current", "placeholder" => "E-mail"), 
+		    		true
+		    	);
+		    	$h .= $Form->input(
+		    		"password", 
+		    		"password", 
+		    		"", 
+		    		false, 
+		    		false, 
+		    		array("class" => "textField current", "placeholder" => "mot de passe"), 
+		    		true
+		    	);
+		    	$h .= $Form->input("submit", "validation", "Connexion", false, true, array("class" => "btnField"), true);
+		    	$h .= $Form->close();
+
+		    	$Model->loginForm = $h;
+
 		    	$phrase1 = array(
 		    		'Ho ho ho ! Bonjour, comment t\'appelles-tu ?',
 		    		'Bonjour bonjour ! Quel est ton prénom ?',
@@ -80,8 +105,6 @@
 		    		'Super, Choisi maintenant un mot magique et écris le avec maman et papa :',
 		    		'Génial ! Il ne te reste plus qu\'à choisir un mot magique, va chercher maman et papa'
 		    	);
-
-
 
 		    	$html = "";
 		    	$html .= $Form->open();
@@ -153,6 +176,35 @@
 		    $this->_view->ViewCompact($Model);
 		}
 		
+		public function Login(){
+		    // Une action commencera toujours par l'initilisation de son modèle
+		    // Cette initialisation doit obligatoirement contenir le repository manager
+		    $UserRepository = $this->_repositoryManager->get('User');
+
+		    if(Core\Request::isPost()){
+		    	// It's a form validation
+		    	// Clean all vars
+		    	$data = Core\Request::cleanRequest();
+
+		    	// Process request...
+		    	$Auth = new Helper\Auth($this->_repositoryManager, array(
+					'table' => 'user',
+					'primaryKeyField' => 'id',
+					'loginField' => 'email',
+					'passwordField' => 'password',
+					'adminField' => 'isAdmin',
+					'encryptedPassword' => true
+				));
+
+			    if($Auth->connect($data['email'], $data['password'])){
+			    	header('location: /lettre.html');
+			    }
+			    else {
+			    	header('location: /accueil.html');
+			    }
+			}
+		}
+
 		public function Error404(){
 		    $Model = new Model\HomeModel($this->_repositoryManager);
 		    
