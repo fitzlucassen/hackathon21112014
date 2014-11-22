@@ -23,19 +23,33 @@
 		    $Model = new Model\LetterModel($this->_repositoryManager);
 		    $Cdiscount = new Helper\Cdiscount($this->_repositoryManager);
 
-		    $Model->request = $Cdiscount->request('Search', array(
-		    	"SearchRequest" => array(
-		    		"Keyword" => "tablette",
-				    "SortBy" => "relevance",
-				    "Pagination" => array(
-						"ItemsPerPage" => 5,
-						"PageNumber" => 0
-					),
-					"Filters" => array(
-						"Brands" => "asus"
+		    if(Core\Request::isPost() || Core\Request::isGet()){
+			   	// It's a form validation
+			   	// Clean all vars
+			   	$data = Core\Request::cleanRequest();
+
+			   	$UserRepository = $this->_repositoryManager->get('user_wishlist_products');
+			   	$UserRepository->add(array(
+			   		'idProduct' => $data['id'],
+			   		'title' => $data['name'],
+			   		'description' => str_replace('£', '"', $data['description']),
+			   		'price' => $data['price']
+			   	)); 
+		    } else {
+		    	$Model->request = $Cdiscount->request('Search', array(
+			    	"SearchRequest" => array(
+			    		"Keyword" => "tablette",
+					    "SortBy" => "relevance",
+					    "Pagination" => array(
+							"ItemsPerPage" => 10,
+							"PageNumber" => 0
+						),
+						"Filters" => array(
+							"Brands" => "asus"
+						)
 					)
-				)
-			));
+				));
+		    }
 
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle

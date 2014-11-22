@@ -1,13 +1,35 @@
+/*
+ *
+ * JUMBOTRON
+ *
+*/
 .jumbotron { background: none; }
-
 .jumbotron h1, .jumbotron h1 small { color: #a94442; }
 
+/*
+ *
+ * CONTAINER
+ *
+*/
 .container-fluid { text-align: center; }
-
 .row { text-align: left; }
+.cache { display: none; }
 
+/*
+ *
+ * DRAGGABLE
+ *
+*/
 .draggable { filter: alpha(opacity=60); opacity: 0.6; }
+.draggable-col { border-bottom: 1px solid #CCC; margin: 10px; }
+.draggable-col:hover { cursor: pointer; }
+.draggable-col, .wishlist-col { z-index: 10; }
+.draggable-col img, .wishlist-col img { width: 100px; height: 100px; margin: 0 10px 10px 0; }
+.wishlist-col { border: 1px #999 dashed; min-height: 300px; margin-bottom: 10px; }
 
+/*
+ *
+ * DROPPED
+ *
+*/
 .dropped { position: static !important; }
-
-.draggable-col img, .wishlist-col img { width: 100px; height: 100px; z-index: 10; }
