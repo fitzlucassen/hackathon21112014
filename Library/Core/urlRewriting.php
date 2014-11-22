@@ -30,8 +30,8 @@
     		$this->_repositoryManager = new RepositoryManager($pdo, $this->_session->Read("lang"));
     		
     		$this->_langRepository = $this->_repositoryManager->get('Lang');
-    		$this->_rewrittingUrlRepository = $this->_repositoryManager->get('RewrittingUrl');
-    		$this->_routeUrlRepository = $this->_repositoryManager->get('RouteUrl');
+    		$this->_rewrittingUrlRepository = $this->_repositoryManager->get('Rewrittingurl');
+    		$this->_routeUrlRepository = $this->_repositoryManager->get('Routeurl');
     	}
 
 		public function loadRoutes($page){

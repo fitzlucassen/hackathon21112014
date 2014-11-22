@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 22 Novembre 2014 à 02:54
+-- Généré le :  Sam 22 Novembre 2014 à 15:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `rewrittingurl` (
   `urlMatched` varchar(255) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'fr',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `rewrittingurl`
@@ -85,7 +85,8 @@ INSERT INTO `rewrittingurl` (`id`, `idRouteUrl`, `urlMatched`, `lang`) VALUES
 (1, 1, '/accueil.html', 'fr'),
 (2, 1, '/en/home.html', 'en'),
 (3, 2, '/404.html', 'fr'),
-(4, 2, '/en/404.html', 'en');
+(4, 2, '/en/404.html', 'en'),
+(5, 5, '/lettre.html', 'fr');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `routeurl` (
 INSERT INTO `routeurl` (`id`, `name`, `controller`, `action`, `order`) VALUES
 (1, 'home', 'home', 'index', 0),
 (2, 'error404', 'home', 'error404', 0),
-(3, 'letter', 'user', 'letter', 0),
+(3, 'letter', 'letter', 'index', 0),
 (5, 'apiconnect', 'webservice', 'connect', 0),
 (6, 'testtest', 'test', 'testCdiscount', 0);
 
@@ -124,18 +125,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `childfirstname` varchar(255) NOT NULL,
   `childlastname` varchar(255) NOT NULL,
   `age` int(3) NOT NULL,
+  `gender` int(5) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `childfirstname`, `childlastname`, `age`, `email`, `password`, `creationdate`) VALUES
-(1, 'mael', 'dulon', 4, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22');
+INSERT INTO `user` (`id`, `childfirstname`, `childlastname`, `age`, `gender`, `email`, `password`, `creationdate`) VALUES
+(1, 'mael', 'dulon', 4, 0, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22');
 
 -- --------------------------------------------------------
 

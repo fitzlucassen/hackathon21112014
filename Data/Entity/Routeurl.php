@@ -8,7 +8,7 @@
 
 	use fitzlucassen\FLFramework\Library\Core as cores;
 
-	class RouteUrl {
+	class Routeurl {
 		private $_id;
 		private $_name;
 		private $_controller;
@@ -47,7 +47,7 @@
 				$result = $this->_pdo->SelectTable($query);
 				$array = array();
 				foreach ($result as $object){
-				    $o = new RewrittingUrl();
+				    $o = new Rewrittingurl();
 				    $o->fillObject($object);
 				    $array[] = $o;
 				}
