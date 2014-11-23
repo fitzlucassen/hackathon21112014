@@ -55,6 +55,7 @@
 					   		'description' => addslashes($value['description']),
 					   		'price' => (str_replace(',', '.', $value['price'])),
 					   		'image' => $value['imageUrl'],
+					   		'url' => $value['urlProduct']
 					   	));
 				   	}
 				   	echo Core\Router::GetUrl('letter', 'publicLetter', array('login' => $idu));
@@ -73,6 +74,8 @@
 							),
 						)
 					));
+
+					$Model->urlPublic = Core\Router::GetUrl('letter', 'publicLetter', array('login' => $idu));
 			    }
 			}
 			else
@@ -90,11 +93,13 @@
 
 		   	$Session = new Helper\Session();
 		    $uRepository = $this->_repositoryManager->get('user');
+		    $wishRepository = $this->_repositoryManager->get('Userwishlist');
 		    $idu = $Session->Read('Auth');
 		   	$Model->user = $uRepository->getBy('id', $idu);
 
+		   	$idWish = $wishRepository->getBy('idUser', $idu);
 			$uProductsRepository = $this->_repositoryManager->get('Userwishlistproducts');	
-			$Model->products = $uProductsRepository->getBy('idUserwishlist', $idu);
+			$Model->products = $uProductsRepository->getBy('idUserwishlist', $idWish[0]->getId());
 		    
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle

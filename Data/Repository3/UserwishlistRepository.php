@@ -9,7 +9,7 @@
 	use fitzlucassen\FLFramework\Library\Core as cores;
 	use fitzlucassen\FLFramework\Data\Entity as entities;
 
-	class UserwishlistproductsRepository {
+	class UserwishlistRepository {
 		private $_pdo;
 		private $_lang;
 		private $_pdoHelper;
@@ -27,12 +27,12 @@
 		 **************************/
 		public static function getAll($Connection){
 			$qb = new cores\QueryBuilder(true);
-			$query = $qb->select()->from(array("user_wishlist_products"))->getQuery();
+			$query = $qb->select()->from(array("user_wishlist"))->getQuery();
 			try {
 				$result = $Connection->SelectTable($query);
 				$array = array();
 				foreach ($result as $object){
-					$o = new entities\Userwishlistproducts();
+					$o = new entities\Userwishlist();
 					$o->fillObject($object);
 					$array[] = $o;
 				}
@@ -45,11 +45,11 @@
 		}
 
 		public function getById($id){
-			$query = $this->_queryBuilder->select()->from(array("user_wishlist_products"))
+			$query = $this->_queryBuilder->select()->from(array("user_wishlist"))
 										->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id)))->getQuery();
 			try {
 				$properties = $this->_pdoHelper->Select($query);
-				$object = new entities\Userwishlistproducts();
+				$object = new entities\Userwishlist();
 				$object->fillObject($properties);
 				return $object;
 			}
@@ -60,13 +60,13 @@
 		}
 
 		public function getBy($key, $value){
-			$query = $this->_queryBuilder->select()->from(array("user_wishlist_products"))
+			$query = $this->_queryBuilder->select()->from(array("user_wishlist"))
 										->where(array(array("link" => "", "left" => $key, "operator" => "=", "right" => $value)))->getQuery();
 			try {
 				$properties = $this->_pdoHelper->SelectTable($query);
 				$array = array();
 				foreach ($properties as $object){
-					$o = new entities\Userwishlistproducts();
+					$o = new entities\Userwishlist();
 					$o->fillObject($object);
 					$array[] = $o;
 				}
@@ -79,7 +79,7 @@
 		}
 
 		public function delete($id) {
-			$query = $this->_queryBuilder->delete("user_wishlist_products")
+			$query = $this->_queryBuilder->delete("user_wishlist")
 										->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))
 										->getQuery();
 			try {
@@ -92,7 +92,7 @@
 		}
 
 		public function add($properties) {
-			$query = $this->_queryBuilder->insert("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'image' => $properties["image"], 'url' => $properties["url"], 'creationdate' => $properties["creationdate"], ))->getQuery();
+			$query = $this->_queryBuilder->insert("user_wishlist", array('idUser' => $properties["idUser"], 'letterurl' => $properties["letterurl"], 'creationdate' => $properties["creationdate"], ))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}
@@ -103,7 +103,7 @@
 		}
 
 		public function update($id, $properties) {
-			$query = $this->_queryBuilder->update("user_wishlist_products", array('idUserwishlist' => $properties["idUserwishlist"], 'idProduct' => $properties["idProduct"], 'title' => $properties["title"], 'description' => $properties["description"], 'price' => $properties["price"], 'image' => $properties["image"], 'url' => $properties["url"], 'creationdate' => $properties["creationdate"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
+			$query = $this->_queryBuilder->update("user_wishlist", array('idUser' => $properties["idUser"], 'letterurl' => $properties["letterurl"], 'creationdate' => $properties["creationdate"], ))->where(array(array("link" => "", "left" => "id", "operator" => "=", "right" => $id )))->getQuery();
 			try {
 				return $this->_pdo->Query($query);
 			}

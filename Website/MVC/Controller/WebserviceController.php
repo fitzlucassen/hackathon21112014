@@ -16,6 +16,46 @@
 		public function __construct($action, $manager) {
 		    parent::__construct("webservice", $action, $manager);
 		}
+
+		public function PushToCart(){
+			// Une action commencera toujours par l'initilisation de son modèle
+		    // Cette initialisation doit obligatoirement contenir le repository manager
+		    $Model = new Model\WebserviceModel($this->_repositoryManager);
+
+		    $Cdiscount = new Helper\Cdiscount($this->_repositoryManager);
+
+		    $this->setLayout('json');
+
+		    $UserRepository = $this->_repositoryManager->get('User');
+		    $UserWishRepository = $this->_repositoryManager->get('Userwishlist');
+		    $ProductRepository = $this->_repositoryManager->get('Userwishlistproducts');
+
+		    if(Core\Request::isPost()){
+		    	// It's a form validation
+		    	// Clean all vars
+		    	$data = Core\Request::cleanRequest();
+		    	foreach ($_POST['ids'] as $key => $id) {
+		    		$Model->result = $Cdiscount->request('PushToCart', array(
+				    	"PushToCartRequest" => array(
+						    "OfferId" => $id,
+						    "ProductId" => $id,
+						    "Quantity" => 1,
+						    "SellerId" => "0"
+						)
+					));
+
+		    		$Model->result = array(
+		    			'cartId' => $Model->result->CartGUID,
+		    			'cartUrl' => $Model->result->CheckoutUrl
+		    		);
+
+					$Model->result = json_encode($Model->result);
+		    	}
+		    }
+		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
+		    // cette fonction prend en paramètre le modèle
+		    $this->_view->ViewCompact($Model);
+		}
 		
 		public function Connect(){
 		    // Une action commencera toujours par l'initilisation de son modèle
@@ -75,7 +115,8 @@
 			    			'description' => $value->getDescription(),
 			    			'price' => ($value->getPrice() * 1),
 			    			'creationdate' => $value->getCreationdate(),
-			    			'image' => $value->getImage()
+			    			'image' => $value->getImage(),
+			    			'url' => $value->getUrl(),
 			    		);
 			    	}
 			    	$Model->result = json_encode($Model->result);

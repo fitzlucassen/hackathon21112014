@@ -10,6 +10,7 @@
         public $request = "";
         public $user = "";
         public $products = "";
+        public $urlPublic = "";
 
         public function __construct($manager) {
             parent::__construct($manager);
