@@ -6343,3 +6343,6 @@ button.close {
 .col-md-4{
 	width: 400px;
 }
+.jumbotron {
+	padding: 10px 0;
+}

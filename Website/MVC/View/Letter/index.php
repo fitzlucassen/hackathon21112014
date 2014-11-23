@@ -17,7 +17,8 @@
 <div class="container-fluid">
 	<div class="jumbotron text-center">
 		<h1><?php echo $title; ?> <small><?php echo $subtitle; ?></small></h1>
-		<button id="envoyer" class="btnField" style="display:block;">Envoyer ma liste au père noël</button>
+		<button id="envoyer" class="btnField" style="display:block;">J'envoie ma liste au père noël</button>
+		<a target="_blank" href="<?php echo $this->Model->urlPublic;?>" id="visualiser" class="btnField" style="display:block;background: #2980b9;border-color: #3498db;width: 300px;text-decoration: none;">Visualiser ma lettre</a>
 		<!-- <p><?php echo $texte; ?></p> -->
 	</div>
 
@@ -34,10 +35,12 @@
 						$class = $i % 2 == 0 ? "angleLeft" : "angleRight";
 
 						echo '<div class="draggable-col ' . $class . '" id="' . $products->BestOffer->Id . '">';				
+						echo '<img class="noeud" src="' . __image_directory__ . '/noeux.png" alt="" style="position: absolute;top: -31px;width: 90px;height: auto;left: 4px;"/>';
 						echo '<img src="' . $products->MainImageUrl . '" alt="Best Offer" class="img-thumbnail pull-left hidden-img" />';
 						echo '<input type="hidden" class="hidden-name" value="' . $products->Name . '" />';
 						echo '<input type="hidden" class="hidden-description" value="' . str_replace('"', '£', $products->Description) . '" />';
 						echo '<input type="hidden" class="hidden-price" value="' . $products->BestOffer->SalePrice . '" />';
+						echo '<input type="hidden" class="hidden-url" value="' . $products->BestOffer->ProductURL . '" />';
 						echo '<div class="clearfix"></div>';
 						echo '</div>';
 						$i++;
@@ -48,7 +51,7 @@
 		</div>
 
 		<div class="col-md-4 col-xs-6 wishlist" style="width:650px;">
-			<div class="wishlist-col" style="margin: 171px 0 0 118px;width: 415px;height: 210px;"></div>
+			<div class="wishlist-col" style="margin: 0 0 0 118px;width: 415px;height: 381px;"></div>
 
 			<div class="clearfix"></div>
 		</div>
