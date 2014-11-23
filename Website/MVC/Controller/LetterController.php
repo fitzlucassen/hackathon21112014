@@ -24,7 +24,7 @@
 		    $Cdiscount = new Helper\Cdiscount($this->_repositoryManager);
 
 			$Session = new Helper\Session();
-		    $uRepository = $this->_repositoryManager->get('user');
+		    $uRepository = $this->_repositoryManager->get('User');
 
 		    $idu = $Session->Read('Auth');
 
@@ -92,7 +92,7 @@
 		    $Model = new Model\LetterModel($this->_repositoryManager);
 
 		   	$Session = new Helper\Session();
-		    $uRepository = $this->_repositoryManager->get('user');
+		    $uRepository = $this->_repositoryManager->get('User');
 		    $wishRepository = $this->_repositoryManager->get('Userwishlist');
 		    $idu = $Session->Read('Auth');
 		   	$Model->user = $uRepository->getBy('id', $idu);

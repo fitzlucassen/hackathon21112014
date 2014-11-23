@@ -37,7 +37,7 @@
 		    	// Clean all vars
 		    	$data = Core\Request::cleanRequest();
 
-		    	$UserRepository = $this->_repositoryManager->get('user');
+		    	$UserRepository = $this->_repositoryManager->get('User');
 		    	$UserRepository->add(array(
 		    		'childfirstname' => $data['childfirstname'],
 		    		'childlastname' => '',
