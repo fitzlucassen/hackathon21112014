@@ -28,13 +28,23 @@
 			   	// Clean all vars
 			   	$data = Core\Request::cleanRequest();
 
-			   	$UserRepository = $this->_repositoryManager->get('user_wishlist_products');
-			   	$UserRepository->add(array(
-			   		'idProduct' => $data['id'],
-			   		'title' => $data['name'],
-			   		'description' => str_replace('£', '"', $data['description']),
-			   		'price' => $data['price']
-			   	)); 
+			   	$uWishRepository = $this->_repositoryManager->get('user_wishlist');
+			   	$uProductsRepository = $this->_repositoryManager->get('user_wishlist_products');
+
+			   	$Session = new Helper\Session();
+
+			   	$uWishRepository->add(array(
+			   		'idUser' => $Session->Read('Auth'),
+			   		'letterurl'=> Core\Router::GetUrl('letter', 'publicLetter', $Session->Read('Auth')),
+			   		'creationdate' => date('y-m-d')
+			   	));
+
+			   	$uWish = $uWishRepository->getBy('idUser', $Session->Read('Auth'));
+
+			   	$uProductsRepository->add(array(
+			   		'idUserWishlist' => $uWish->getId(),
+			   		'creationdate' => date('y-m-d')
+			   	));
 		    } else {
 		    	$Model->request = $Cdiscount->request('Search', array(
 			    	"SearchRequest" => array(
@@ -65,12 +75,6 @@
 		    
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle
-		    $this->_view->ViewCompact($Model);
-		}
-		
-		public function Error404(){
-		    $Model = new Model\HomeModel($this->_repositoryManager);
-		    
 		    $this->_view->ViewCompact($Model);
 		}
     }

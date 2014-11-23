@@ -131,6 +131,7 @@ select.select{
 }
 
 .login-panel input.textField{
+	display: block;
 	padding: 5px;
 	border: none;
 	background: 0 0;

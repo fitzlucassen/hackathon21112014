@@ -63,7 +63,7 @@
 		    		"", 
 		    		false, 
 		    		false, 
-		    		array("class" => "textField current", "placeholder" => "E-mail"), 
+		    		array("class" => "textField", "placeholder" => "E-mail"), 
 		    		true
 		    	);
 		    	$h .= $Form->input(
@@ -72,7 +72,7 @@
 		    		"", 
 		    		false, 
 		    		false, 
-		    		array("class" => "textField current", "placeholder" => "mot de passe"), 
+		    		array("class" => "textField", "placeholder" => "mot de passe"), 
 		    		true
 		    	);
 		    	$h .= $Form->input("submit", "validation", "Connexion", false, true, array("class" => "btnField"), true);

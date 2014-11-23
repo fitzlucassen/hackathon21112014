@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     $(".wishlist-col").droppable({
         drop: function (event, ui) {
-            if ($(".wishlist-col").length == 0) {
+            if ($(".wishlist-col").length === 0) {
                 $(".wishlist-col").html("");
             }
             ui.draggable.addClass("dropped");

@@ -3,6 +3,7 @@ $(document).ready(function(){
 		var currentInput = $('input.current, select.current');
 		var currentLabel = $('label.label[for="' + currentInput.attr('id') + '"]');
 		var currentBtn = $(this);
+		
 
 		var nextInput = currentBtn.siblings('input.hidden, select.hidden').first();
 		var nextLabel = $('label.label[for="' + nextInput.attr('id') + '"]');
