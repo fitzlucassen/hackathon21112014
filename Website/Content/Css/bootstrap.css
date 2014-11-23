@@ -5,6 +5,16 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+#imgbg{
+	background: transparent url('../Media/Image/bg-2.jpg') center center no-repeat;
+	width: 100%;
+	height: 100%;
+
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -1413,6 +1423,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  position: fixed;top:100px; left:0;width: 100%;z-index:999;
 }
 .row {
   margin-right: -15px;
@@ -6330,3 +6341,6 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.col-md-4{
+	width: 400px;
+}

@@ -4,7 +4,7 @@
  *
 */
 .jumbotron { background: none !important; }
-.jumbotron h1, .jumbotron h1 small { color: #a94442 !important; }
+.jumbotron h1, .jumbotron h1 small { color: #fff !important; font-size: 35px !important;font-weight: normal !important;font-family: 'Segoe ui' !important;}
 .light-white { background-color: rgba(255,255,255,0.1); }
 
 /*
@@ -28,3 +28,17 @@
  *
 */
 .dropped { position: static !important; }
+
+
+.angleLeft{
+	transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+	-moz-transform: rotate(10deg);
+	-o-transform: rotate(10deg);
+}
+.angleRight{
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-o-transform: rotate(-10deg);
+}

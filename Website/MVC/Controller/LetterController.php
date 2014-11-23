@@ -58,7 +58,7 @@
 				    		"Keyword" => "e",
 						    "SortBy" => "relevance",
 						    "Pagination" => array(
-								"ItemsPerPage" => 10,
+								"ItemsPerPage" => 9,
 								"PageNumber" => 0
 							),
 							"Filters" => array(

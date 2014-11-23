@@ -12,6 +12,7 @@
     $subtitle = '';
     $texte = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum fringilla massa sed volutpat. Praesent facilisis tempus metus.';
 ?>
+<img src="<?php echo __image_directory__; ?>/bg-2.jpg" alt="" id="imgbg"/>
 
 <div class="container-fluid">
 	<div class="jumbotron text-center">
@@ -29,7 +30,9 @@
 						break;
 					}
 					else {
-						echo '<div class="draggable-col" id="' . $products->BestOffer->Id . '">';				
+						$class = $i % 2 == 0 ? "angleLeft" : "angleRight";
+
+						echo '<div class="draggable-col ' . $class . '" id="' . $products->BestOffer->Id . '">';				
 						echo '<img src="' . $products->MainImageUrl . '" alt="Best Offer" class="img-thumbnail pull-left hidden-img" />';
 						echo '<input type="hidden" class="hidden-name" value="' . $products->Name . '" />';
 						echo '<input type="hidden" class="hidden-description" value="' . str_replace('"', '£', $products->Description) . '" />';
@@ -43,18 +46,13 @@
 			</div>
 		</div>
 
-		<div class="col-md-4 col-xs-6 wishlist light-white">
+		<div class="col-md-4 col-xs-6 wishlist" style="margin: 215px 0 0 118px;width: 415px;">
 			<div class="wishlist-col"></div>
 
 			<div class="clearfix"></div>
 		</div>
 
 		<div class="col-md-4 col-xs-6">
-			<button type="button" class="btn btn-success btn-lg pull-left" id="envoyer">Envoyer ma lettre</button>
-			<button type="button" class="btn btn-danger btn-lg pull-right" id="reinitialiser">Réinitialiser</button>
-
-			<div class="clearfix"></div>
-
 			<div class="row wishlist-visible"></div>
 		</div>
 	</div>
