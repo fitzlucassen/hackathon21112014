@@ -8,37 +8,38 @@
     $head = $this->RegisterViewHead();
     // START CONTENT
     // Intégrer ci-dessous la vue
-    $title = 'Title';
-    $subtitle = 'Subtitle';
+    $title = 'Dépose les cadeaux que tu veux dans la hotte !';
+    $subtitle = '';
     $texte = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum fringilla massa sed volutpat. Praesent facilisis tempus metus.';
 ?>
 
 <div class="container-fluid">
 	<div class="jumbotron text-center">
 		<h1><?php echo $title; ?> <small><?php echo $subtitle; ?></small></h1>
-		<p><?php echo $texte; ?></p>
+		<!-- <p><?php echo $texte; ?></p> -->
 	</div>
 
 	<div class="row">
 		<div class="col-md-4 col-xs-6">
-			<h1>Idées de cadeaux</h1>
-
 			<div class="row gift-list">
-			<?php $i = 0;
-			foreach ($this->Model->request->Products as $products) {
-				if ($i >= 10) {
-					break;
-				} else {
-					echo '<div class="draggable-col" id="' . $products->BestOffer->Id . '">';				
-					echo '<img src="' . $products->MainImageUrl . '" alt="Best Offer" class="img-thumbnail pull-left hidden-img" />';
-					echo '<input type="hidden" class="hidden-name" value="' . $products->Name . '" />';
-					echo '<input type="hidden" class="hidden-description" value="' . str_replace('"', '£', $products->Description) . '" />';
-					echo '<input type="hidden" class="hidden-price" value="' . $products->BestOffer->SalePrice . '" />';
-					echo '<div class="clearfix"></div>';
-					echo '</div>';
-					$i++;
+			<?php 
+				$i = 0;
+				foreach ($this->Model->request->Products as $products) {
+					if ($i >= 10) {
+						break;
+					}
+					else {
+						echo '<div class="draggable-col" id="' . $products->BestOffer->Id . '">';				
+						echo '<img src="' . $products->MainImageUrl . '" alt="Best Offer" class="img-thumbnail pull-left hidden-img" />';
+						echo '<input type="hidden" class="hidden-name" value="' . $products->Name . '" />';
+						echo '<input type="hidden" class="hidden-description" value="' . str_replace('"', '£', $products->Description) . '" />';
+						echo '<input type="hidden" class="hidden-price" value="' . $products->BestOffer->SalePrice . '" />';
+						echo '<div class="clearfix"></div>';
+						echo '</div>';
+						$i++;
+					}
 				}
-			} ?>
+			?>
 			</div>
 		</div>
 
@@ -49,8 +50,6 @@
 		</div>
 
 		<div class="col-md-4 col-xs-6">
-			<h1>Ma liste de cadeaux</h1>
-
 			<button type="button" class="btn btn-success btn-lg pull-left" id="envoyer">Envoyer ma lettre</button>
 			<button type="button" class="btn btn-danger btn-lg pull-right" id="reinitialiser">Réinitialiser</button>
 

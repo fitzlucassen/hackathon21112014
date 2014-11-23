@@ -14,12 +14,18 @@ $(document).ready(function () {
 
             img.click(function(){
                 var idToRemove = $(this).attr('id');
+
+                var htmlToBind = '';
                 $(".wishlist-col").find(".draggable-col").each(function(){
                     if ($(this).attr('id') === idToRemove) {
-                        $(this).appendTo('.gift-list');
+                        htmlToBind = $(this);
                         $(this).remove();
                     }
                 });
+
+                htmlToBind.removeClass('dropped').addClass('ui-draggable').css('top','auto').css('left','auto');
+                htmlToBind = htmlToBind.prepend(img.clone());
+                $('.gift-list').append(htmlToBind);
                 $(this).remove();
             });
 

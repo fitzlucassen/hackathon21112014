@@ -23,43 +23,53 @@
 		    $Model = new Model\LetterModel($this->_repositoryManager);
 		    $Cdiscount = new Helper\Cdiscount($this->_repositoryManager);
 
-		    if(Core\Request::isPost() || Core\Request::isGet()){
-			   	// It's a form validation
-			   	// Clean all vars
-			   	$data = Core\Request::cleanRequest();
+			$Session = new Helper\Session();
+		    $uRepository = $this->_repositoryManager->get('user');
 
-			   	$uWishRepository = $this->_repositoryManager->get('user_wishlist');
-			   	$uProductsRepository = $this->_repositoryManager->get('user_wishlist_products');
+		    $idu = $Session->Read('Auth');
 
-			   	$Session = new Helper\Session();
+		    if(isset($idu) && !empty($idu)){
+			    $u = $uRepository->getBy('id', $idu);
 
-			   	$uWishRepository->add(array(
-			   		'idUser' => $Session->Read('Auth'),
-			   		'letterurl'=> Core\Router::GetUrl('letter', 'publicLetter', $Session->Read('Auth')),
-			   		'creationdate' => date('y-m-d')
-			   	));
+			    if(Core\Request::isPost() || Core\Request::isGet()){
+				   	// It's a form validation
+				   	// Clean all vars
+				   	$data = Core\Request::cleanRequest();
 
-			   	$uWish = $uWishRepository->getBy('idUser', $Session->Read('Auth'));
+				   	$uWishRepository = $this->_repositoryManager->get('user_wishlist');
+				   	$uProductsRepository = $this->_repositoryManager->get('user_wishlist_products');
 
-			   	$uProductsRepository->add(array(
-			   		'idUserWishlist' => $uWish->getId(),
-			   		'creationdate' => date('y-m-d')
-			   	));
-		    } else {
-		    	$Model->request = $Cdiscount->request('Search', array(
-			    	"SearchRequest" => array(
-			    		"Keyword" => "e",
-					    "SortBy" => "relevance",
-					    "Pagination" => array(
-							"ItemsPerPage" => 10,
-							"PageNumber" => 0
-						),
-						"Filters" => array(
-							'Navigation' => 'toys'
-						),
-					)
-				));
-		    }
+
+				   	$uWishRepository->add(array(
+				   		'idUser' => $idu,
+				   		'letterurl'=> Core\Router::GetUrl('letter', 'publicLetter', $idu),
+				   		'creationdate' => date('y-m-d')
+				   	));
+
+				   	$uWish = $uWishRepository->getBy('idUser', $idu);
+
+				   	$uProductsRepository->add(array(
+				   		'idUserWishlist' => $uWish->getId(),
+				   		'creationdate' => date('y-m-d')
+				   	));
+			    } else {
+			    	$Model->request = $Cdiscount->request('Search', array(
+				    	"SearchRequest" => array(
+				    		"Keyword" => "e",
+						    "SortBy" => "relevance",
+						    "Pagination" => array(
+								"ItemsPerPage" => 10,
+								"PageNumber" => 0
+							),
+							"Filters" => array(
+								'Navigation' => 'toys'
+							),
+						)
+					));
+			    }
+			}
+			else
+				header('location: /index.html');
 
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle
