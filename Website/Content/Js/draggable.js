@@ -52,29 +52,30 @@ $(document).ready(function () {
         });
     });
 
-    $("#envoyer").click(function(){
+    $("#envoyer").click(function(e){
         var i = 0;
         var data = [];
 
+        e.stopPropagation();
+        e.preventDefault();
         $(".wishlist-col").find(".draggable-col").each(function(){
             data.push({
                 'id':$(this).attr('id'),
                 'name':$(this).find(".hidden-name").val(),
                 'description':$(this).find(".hidden-description").val(),
-                'price':$(this).find(".hidden-sale-price").val(),
+                'price':$(this).find(".hidden-price").val(),
+                'imageUrl':$('img#' + $(this).attr('id')).attr('src')
             });
             i++;
         });
-
-        alert(JSON.stringify(data));
 
         $.ajax({
             type: 'POST',
             datatype: 'json',
             data: {postData:data},
             url: '/lettre.html',
-            success: function(){
-                // localtion.href('/accueil.html');
+            success: function(url){
+                $(location).attr('href', url);
             },
             error: function(e){
                 alert(e.message);
