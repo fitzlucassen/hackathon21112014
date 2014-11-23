@@ -54,3 +54,16 @@
 	-moz-transform: rotate(-10deg);
 	-o-transform: rotate(-10deg);
 }
+.pagination-custom{
+	margin-top: -30px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+.pagination-custom a{
+	display: inline-block !important;
+	padding: 5px !important;
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Segoe ui' !important;
+	font-size: 20px;
+}

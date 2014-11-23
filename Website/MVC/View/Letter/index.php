@@ -24,6 +24,11 @@
 
 	<div class="row">
 		<div class="col-md-4 col-xs-6">
+			<div class="pagination-custom">
+				<a href="#"><</a>
+				<a href="#">1</a>
+				<a href="#">></a>
+			</div>
 			<div class="row gift-list">
 			<?php 
 				$i = 0;

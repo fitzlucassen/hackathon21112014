@@ -21,6 +21,10 @@ $(document).ready(function(){
 
 			nextLabel.text(nextLabel.text().replace('{1}', text));
 		}
+		if(nextLabel.text().indexOf('{2}') >= 0){
+			nextLabel.text(nextLabel.text().replace('{2}', $('input[id="ageField"]').val()));
+		}
+
 		currentInput.fadeOut('slow', function(){
 			$(this).removeClass('current');
 			nextInput.fadeIn('slow', function(){
