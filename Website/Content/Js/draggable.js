@@ -74,8 +74,8 @@ $(document).ready(function () {
             datatype: 'json',
             data: {postData:data},
             url: '/lettre.html',
-            success: function(){
-                // localtion.href('/accueil.html');
+            success: function(url){
+                $(location).attr('href', url);
             },
             error: function(e){
                 alert(e.message);

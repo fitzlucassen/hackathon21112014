@@ -57,6 +57,8 @@
 					   		'image' => $value['imageUrl'],
 					   	));
 				   	}
+				   	echo Core\Router::GetUrl('letter', 'publicLetter', array('login' => $idu));
+				   	die();
 			    } else {
 			    	$Model->request = $Cdiscount->request('Search', array(
 				    	"SearchRequest" => array(

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 22 Novembre 2014 à 23:58
+-- Généré le :  Dim 23 Novembre 2014 à 11:32
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `user`
@@ -141,7 +141,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `childfirstname`, `childlastname`, `age`, `gender`, `email`, `password`, `creationdate`) VALUES
 (1, 'mael', 'dulon', 4, 0, 'maeldulon@yopmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2014-11-22'),
 (6, 'zefzfz', '', 4, 0, 'efzfez@zefef.fe', 'b989dec164c74a80b1dd4ad63fcb5280', '2014-11-22'),
-(7, 'Romain', '', 4, 0, 'cocuou@zezef.fe', 'f614be5c658acd76f5c71592b6ec09e6', '2014-11-22');
+(7, 'Romain', '', 4, 0, 'cocuou@zezef.fe', 'f614be5c658acd76f5c71592b6ec09e6', '2014-11-22'),
+(8, 'justine', '', 8, 0, 'zefzf@zefzef.fe', '5436088c2e41a20902bba03f186a2b84', '2014-11-23');
 
 -- --------------------------------------------------------
 
@@ -155,14 +156,14 @@ CREATE TABLE IF NOT EXISTS `user_wishlist` (
   `letterurl` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Contenu de la table `user_wishlist`
 --
 
 INSERT INTO `user_wishlist` (`id`, `idUser`, `letterurl`, `creationdate`) VALUES
-(1, 1, 'hack-cdiscount.thibaultdulon.com/1/lettre-afficher.html', '2014-11-22');
+(18, 1, '/1/lettre-afficher.html', '2014-11-23');
 
 -- --------------------------------------------------------
 
@@ -173,21 +174,22 @@ INSERT INTO `user_wishlist` (`id`, `idUser`, `letterurl`, `creationdate`) VALUES
 CREATE TABLE IF NOT EXISTS `user_wishlist_products` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `idUserwishlist` int(5) NOT NULL,
-  `idProduct` int(5) NOT NULL,
+  `idProduct` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `price` decimal(5,2) NOT NULL,
+  `price` varchar(10) NOT NULL,
   `image` varchar(255) NOT NULL,
   `creationdate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `user_wishlist_products`
 --
 
 INSERT INTO `user_wishlist_products` (`id`, `idUserwishlist`, `idProduct`, `title`, `description`, `price`, `image`, `creationdate`) VALUES
-(1, 1, 1, 'produit test', 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum', '25.99', 'http://houstin.info/wp-content/uploads/2010/03/lapin-cretin1.jpg', '2014-11-22');
+(2, 1, 'PL5149', 'PLAYMOBIL 5149 Base des E-Rangers', '5149 - 1 base - 5 personnages - 1 véhicule - Accessoires - Garçon - A partir de   7 ans - Livré à l''unité', '77.59', 'http://i2.cdscdn.com/pdt2/1/4/9/1/300x300/PL5149.jpg', '2014-11-23'),
+(3, 1, 'LEA89027', 'HEROS PIXAR Explorer Jeu LeapPad LeapFrog', 'LeapFrog - Parcours la galaxie avec WALL-E, nage avec Nemo et vie les aventures de Woody afin de progresser en sciences, logique et d''autres disciplines ! Compatible Leapster Explorer et LeapPad - Mixte - A partir de 3 ans - Vendu à l''unité', '15.45', 'http://i2.cdscdn.com/pdt2/0/2/7/1/300x300/LEA89027.jpg', '2014-11-23');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
