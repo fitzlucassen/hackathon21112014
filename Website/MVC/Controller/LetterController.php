@@ -81,7 +81,13 @@
 		    // Cette initialisation doit obligatoirement contenir le repository manager
 		    $Model = new Model\LetterModel($this->_repositoryManager);
 
-		    
+		   	$Session = new Helper\Session();
+		    $uRepository = $this->_repositoryManager->get('user');
+		    $idu = $Session->Read('Auth');
+		   	$Model->user = $uRepository->getBy('id', $idu);
+
+			$uProductsRepository = $this->_repositoryManager->get('Userwishlistproducts');	
+			$Model->products = $uProductsRepository->getBy('idUserwishlist', $idu);
 		    
 		    // Une action finira toujours par un $this->_view->ViewCompact contenant : 
 		    // cette fonction prend en paramètre le modèle

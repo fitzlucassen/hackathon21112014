@@ -8,6 +8,8 @@
      */
     class LetterModel extends Model{
         public $request = "";
+        public $user = "";
+        public $products = "";
 
         public function __construct($manager) {
             parent::__construct($manager);

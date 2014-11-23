@@ -1,5 +1,15 @@
 /*
  *
+ * FONTS
+ *
+*/
+@font-face {
+    font-family: "Always";
+    src: url('Font/Always.ttf') format('truetype');
+}
+
+/*
+ *
  * JUMBOTRON
  *
 */
@@ -16,11 +26,13 @@
 .draggable-col { display: inline-block; margin: 10px; }
 .draggable-col:hover { cursor: pointer; }
 .draggable-col, .wishlist-col { z-index: 10; }
-.draggable-col img, .wishlist-col img { width: 100px; height: 100px; margin: 0 10px 10px 0; }
+.draggable-col img, .wishlist-col img { width: 100px; height: 100px; }
 .wishlist-col { height: 300px; }
 .wishlist-col .dropped { display: none; }
 .wishlist-visible { padding: 10px; }
 .wishlist-visible img { width: 60px; height: auto; margin: 0 5px 5px 0; }
+.img-thumbnail {  margin: 0 10px 10px 0; }
+.lettre { color: rgba(0,0,0,0.78); font-family: "Always", Arial, sans-serif; font-size: 36px; }
 
 /*
  *

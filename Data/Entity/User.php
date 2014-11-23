@@ -13,15 +13,16 @@
 		private $_childfirstname;
 		private $_childlastname;
 		private $_age;
+		private $_gender;
 		private $_email;
 		private $_password;
 		private $_creationdate;
 		private $_user_wishlists;
 		private $_queryBuilder;
 
-		public function __construct($id = "", $childfirstname = "", $childlastname = "", $age = "", $email = "", $password = "", $creationdate = ""){
+		public function __construct($id = "", $childfirstname = "", $childlastname = "", $age = "", $gender = "", $email = "", $password = "", $creationdate = ""){
 			$this->_queryBuilder = new cores\QueryBuilder(true);
-			$this->fillObject(array("id" => $id, "childfirstname" => $childfirstname, "childlastname" => $childlastname, "age" => $age, "email" => $email, "password" => $password, "creationdate" => $creationdate));
+			$this->fillObject(array("id" => $id, "childfirstname" => $childfirstname, "childlastname" => $childlastname, "age" => $age, "gender" => $gender, "email" => $email, "password" => $password, "creationdate" => $creationdate));
 		}
 
 		/***********
@@ -38,6 +39,9 @@
 		}
 		public function getAge() {
 			return $this->_age;
+		}
+		public function getGender() {
+			return $this->_gender;
 		}
 		public function getEmail() {
 			return $this->_email;
@@ -81,6 +85,8 @@
 				$this->_childlastname = $properties["childlastname"];
 			if(!empty($properties["age"]))
 				$this->_age = $properties["age"];
+			if(!empty($properties["gender"]))
+				$this->_age = $properties["gender"];
 			if(!empty($properties["email"]))
 				$this->_email = $properties["email"];
 			if(!empty($properties["password"]))
