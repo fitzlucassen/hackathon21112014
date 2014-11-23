@@ -73,7 +73,7 @@
 			    			'id' => $value->getIdProduct(),
 			    			'title' => $value->getTitle(),
 			    			'description' => $value->getDescription(),
-			    			'price' => $value->getPrice(),
+			    			'price' => ($value->getPrice() * 1),
 			    			'creationdate' => $value->getCreationdate(),
 			    			'image' => $value->getImage()
 			    		);

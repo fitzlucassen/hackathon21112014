@@ -17,6 +17,7 @@
 <div class="container-fluid">
 	<div class="jumbotron text-center">
 		<h1><?php echo $title; ?> <small><?php echo $subtitle; ?></small></h1>
+		<button id="envoyer" class="btnField" style="display:block;">Envoyer ma liste au père noël</button>
 		<!-- <p><?php echo $texte; ?></p> -->
 	</div>
 
@@ -46,8 +47,8 @@
 			</div>
 		</div>
 
-		<div class="col-md-4 col-xs-6 wishlist" style="margin: 215px 0 0 118px;width: 415px;">
-			<div class="wishlist-col"></div>
+		<div class="col-md-4 col-xs-6 wishlist" style="width:650px;">
+			<div class="wishlist-col" style="margin: 171px 0 0 118px;width: 415px;height: 210px;"></div>
 
 			<div class="clearfix"></div>
 		</div>

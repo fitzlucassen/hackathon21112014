@@ -4,4 +4,3 @@
 <script type="text/javascript" src="/<?php echo __js_directory__  ; ?>/Base/bootstrap.min.js"></script>
 <script type="text/javascript" src="/<?php echo __js_directory__  ; ?>/npm.js"></script>
 <script type="text/javascript" src="/<?php echo __js_directory__  ; ?>/_built.js"></script>
-<script src="/<?php echo __js_directory__ ?>/draggable.js" type="text/javascript"></script>

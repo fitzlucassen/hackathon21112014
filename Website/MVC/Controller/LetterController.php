@@ -36,22 +36,27 @@
 				   	// Clean all vars
 				   	$data = Core\Request::cleanRequest();
 
-				   	$uWishRepository = $this->_repositoryManager->get('user_wishlist');
-				   	$uProductsRepository = $this->_repositoryManager->get('user_wishlist_products');
-
+				   	$uWishRepository = $this->_repositoryManager->get('Userwishlist');
+				   	$uProductsRepository = $this->_repositoryManager->get('Userwishlistproducts');
 
 				   	$uWishRepository->add(array(
-				   		'idUser' => $idu,
-				   		'letterurl'=> Core\Router::GetUrl('letter', 'publicLetter', $idu),
+				   		'iduser' => $idu,
+				   		'letterurl'=> Core\Router::GetUrl('letter', 'publicLetter', array('login' => $idu)),
 				   		'creationdate' => date('y-m-d')
 				   	));
 
 				   	$uWish = $uWishRepository->getBy('idUser', $idu);
-
-				   	$uProductsRepository->add(array(
-				   		'idUserWishlist' => $uWish->getId(),
-				   		'creationdate' => date('y-m-d')
-				   	));
+				   	foreach ($_POST['postData'] as $key => $value) {
+				   		$uProductsRepository->add(array(
+					   		'idUserwishlist' => $uWish[0]->getId(),
+					   		'creationdate' => date('y-m-d'),
+					   		'idProduct' => $value['id'],
+					   		'title' => addslashes($value['name']),
+					   		'description' => addslashes($value['description']),
+					   		'price' => (str_replace(',', '.', $value['price'])),
+					   		'image' => $value['imageUrl'],
+					   	));
+				   	}
 			    } else {
 			    	$Model->request = $Cdiscount->request('Search', array(
 				    	"SearchRequest" => array(
