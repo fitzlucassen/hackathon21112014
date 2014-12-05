@@ -14,9 +14,8 @@
 
 
 	<div class="perenoel">
-	</div>
-
-	<div class="htmlContainer">
-		<?php echo $this->Model->htmlForm; ?>
+		<div class="htmlContainer">
+			<?php echo $this->Model->htmlForm; ?>
+		</div>
 	</div>
 </div>

@@ -1423,7 +1423,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  position: fixed;top:100px; left:0;width: 100%;z-index:999;
+  position: fixed;top:210px; left:0;width: 100%;z-index:999;
 }
 .row {
   margin-right: -15px;

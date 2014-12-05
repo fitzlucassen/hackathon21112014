@@ -18,12 +18,11 @@
 	<div class="jumbotron text-center">
 		<h1><?php echo $title; ?> <small><?php echo $subtitle; ?></small></h1>
 		<button id="envoyer" class="btnField" style="display:block;">J'envoie ma liste au père noël</button>
-		<a target="_blank" href="<?php echo $this->Model->urlPublic;?>" id="visualiser" class="btnField" style="display:block;background: #2980b9;border-color: #3498db;width: 300px;text-decoration: none;">Visualiser ma lettre</a>
 		<!-- <p><?php echo $texte; ?></p> -->
 	</div>
 
-	<div class="row">
-		<div class="col-md-4 col-xs-6">
+	<div class="blocContainer">
+		<div style="position: absolute;bottom:10px;left:10px;">
 			<div class="pagination-custom">
 				<a href="#"><</a>
 				<a href="#">1</a>
@@ -55,13 +54,13 @@
 			</div>
 		</div>
 
-		<div class="col-md-4 col-xs-6 wishlist" style="width:650px;">
+		<div class="wishlist" style="width:650px;margin:auto;">
 			<div class="wishlist-col" style="margin: 0 0 0 118px;width: 415px;height: 381px;"></div>
 
 			<div class="clearfix"></div>
 		</div>
 
-		<div class="col-md-4 col-xs-6">
+		<div style="position:absolute;bottom: 10px;right: 10px;">
 			<div class="row wishlist-visible"></div>
 		</div>
 	</div>
